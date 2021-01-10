@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Maxime Dumas_FinalProjectPython</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+  
+</head>
+
+<body style="background: #FFF;">
+ <div class="login">
+	<h1>Biodegradable API</h1>
+   <p>Hello, this site allows you to determine if a chemical element is Biodegradable or not !</p>
+   <h2>Please fill this form to know it : </h2>
+   <form action="{{ url_for('predict')}}"method="post">
+    <label>SpMax_L (Leading eigenvalue from Laplace matrix) : <input name = "SpMax_L" placeholder="true with small value, or false with big value with default values" required="required"><br>
+
+    <label>J_Dz (Balaban-like index from Barysz matrix weighted by Sanderson electronegativity) : <input name = "J_Dz" value="2.11" onfocus="this.value='';"></label><br>
+
+    <label>nHM (Number of heavy atoms) : <input name = "nHM"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>F01[N-N] (Frequency of N-N at topological distance 1) : <input name = "F01[N-N]"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>F04[C-N] (Frequency of C-N at topological distance 4) : <input name = "F04[C-N]"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>NssssC (Number of atoms of type ssssC) : <input name = "NssssC"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>nCb- (Number of substituted benzene C(sp2)) : <input name = "nCb-"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>C% (Percentage of C atoms) : <input name = "C%"  value="30.8" onfocus="this.value='';"></label><br>
+
+    <label>nCp (Number of terminal primary C(sp3)) : <input name = "nCP"  value="1" onfocus="this.value='';"></label><br>
+
+    <label>nO (Number of oxygen atoms) : <input name = "nO"  value="1" onfocus="this.value='';"></label><br>
+
+    <label>F03[C-N] (Frequency of C-N at topological distance 3) : <input name = "F03[C-N]"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>SdssC (Sum of dssC E-states) : <input name = "SdssC"  value="0" onfocus="this.value='';"></label><br>
+
+    <label>HyWi_B(m) (Hyper-Wiener-like index (log function) from Burden matrix weighted by mass) : <input name = "HyWi_B"  value="2.46" onfocus="this.value='';"></label><br>
+
+    <label>LOC (Lopping centric index) : <input name = "LOC"  value="1.39" onfocus="this.value='';"></label><br>
+
+    <label>SM6_L (Spectral moment of order 6 from Laplace matrix) : <input name = "SM6"  value="8.72" onfocus="this.value='';"></label><br>
+
+
+
+    <button type="submit" class="btn btn-primary btn-block btn-large">Prediction</button>
+   </form>
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+</body>
+</html>
